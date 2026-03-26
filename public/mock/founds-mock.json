@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "FPV_BTG_PACTUAL_RECAUDADORA",
+    "mount_min": 75000,
+    "category": "FPV"
+  },
+  {
+    "id": 2,
+    "name": "FPV_BTG_PACTUAL_ECOPETROL",
+    "mount_min": 125000,
+    "category": "FPV"
+  },
+  {
+    "id": 3,
+    "name": "DEUDAPRIVADA",
+    "mount_min": 50000,
+    "category": "FIC"
+  },
+  {
+    "id": 4,
+    "name": "FDO-ACCIONES",
+    "mount_min": 250000,
+    "category": "FIC"
+  },
+  {
+    "id": 5,
+    "name": "FPV_BTG_PACTUAL_DINAMICA",
+    "mount_min": 100000,
+    "category": "FPV"
+  }
+]

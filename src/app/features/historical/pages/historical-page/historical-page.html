@@ -1,0 +1,40 @@
+<section class="page history">
+  <div class="page__header">
+    <p class="page__label">HISTORIAL</p>
+    <h1 class="page__title">Historial de transacciones</h1>
+  </div>
+
+  <div class="data-table">
+    <table class="data-table__table">
+      <thead>
+        <tr>
+          <th>Tipo</th>
+          <th>Fondo</th>
+          <th>Monto</th>
+          <th>Notificación</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (transaction of transactions(); track transaction.id) {
+          <tr class="data-table__row">
+            <td><span class="row__item">{{ transaction.type }}</span></td>
+            <td><span class="row__item">{{ transaction.fund }}</span></td>
+            <td><span class="row__item">{{ formatAmount(transaction.amount) }}</span></td>
+            <td><span class="row__item">{{ transaction.notification }}</span></td>
+            <td><span class="row__item">{{ transaction.date }}</span></td>
+          </tr>
+        }
+        @if (transactions().length === 0) {
+          <tr>
+            <td colspan="5">
+              <div class="page__empty">
+                <p class="page__empty-title">No hay transacciones registradas.</p>
+              </div>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>

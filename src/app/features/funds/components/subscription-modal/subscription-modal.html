@@ -1,0 +1,73 @@
+<div class="modal-overlay">
+  <div class="modal">
+
+    <div class="modal__header">
+      <h2 class="modal__title">Nueva suscripción</h2>
+    </div>
+
+    <div class="modal__body">
+
+      <div class="modal__field">
+        <label class="modal__label-field">Fondo seleccionado</label>
+        <div class="modal__input modal__input--readonly">{{ fund().name }}</div>
+      </div>
+
+      <div class="modal__field">
+        <label class="modal__label-field">Monto a suscribir</label>
+        <div class="modal__input-wrapper">
+          <span class="modal__prefix">$</span>
+          <input
+            class="modal__input modal__input--with-prefix"
+            [class.modal__input--error]="amountControl.invalid && amountControl.touched"
+            type="number"
+            [formControl]="amountControl"
+            min="0"
+          />
+        </div>
+        @if (amountControl.touched) {
+          @if (amountControl.hasError('required')) {
+            <p class="modal__error">El monto es requerido.</p>
+          } @else if (amountControl.hasError('min')) {
+            <p class="modal__error">El monto mínimo es {{ fund().mount_min }}.</p>
+          }
+        }
+      </div>
+
+      <div class="modal__field">
+        <label class="modal__label-field">Método de notificación</label>
+        <div class="modal__toggle">
+          <button
+            class="modal__toggle-btn"
+            [class.modal__toggle-btn--active]="notificationMethod === NOTIFICATONS_TYPES.EMAIL"
+            (click)="notificationMethod = NOTIFICATONS_TYPES.EMAIL"
+            type="button"
+          >
+            Email
+          </button>
+          <button
+            class="modal__toggle-btn"
+            [class.modal__toggle-btn--active]="notificationMethod === NOTIFICATONS_TYPES.SMS"
+            (click)="notificationMethod = NOTIFICATONS_TYPES.SMS"
+            type="button"
+          >
+            SMS
+          </button>
+        </div>
+      </div>
+
+      @if (insufficientBalance) {
+        <div class="modal__alert">
+          <p class="modal__alert-title">Saldo insuficiente</p>
+          <p class="modal__alert-text">No tienes saldo suficiente para completar esta suscripción.</p>
+        </div>
+      }
+
+    </div>
+
+    <div class="modal__footer">
+      <button class="modal__btn modal__btn--cancel" type="button" (click)="close()">Cancelar</button>
+      <button class="modal__btn modal__btn--confirm" type="button" (click)="confirm()">Confirmar</button>
+    </div>
+
+  </div>
+</div>

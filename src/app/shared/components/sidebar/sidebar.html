@@ -1,0 +1,54 @@
+<nav class="sidebar">
+
+  <div class="sidebar__top">
+    <div class="sidebar__brand">
+      <p class="sidebar__brand-subtitle">BTG</p>
+      <h2 class="sidebar__brand-title">Fondos FPV / FIC</h2>
+    </div>
+
+    <button
+      class="sidebar__hamburger"
+      [class.sidebar__hamburger--open]="menuOpen()"
+      (click)="toggleMenu()"
+      type="button"
+      aria-label="Abrir menú"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="sidebar__balance sidebar__balance--inline">
+      <p class="sidebar__balance-label">Saldo disponible</p>
+      <h3 class="sidebar__balance-amount">{{ balanceFormatted() }}</h3>
+    </div>
+  </div>
+
+  <ul class="sidebar__menu" [class.sidebar__menu--open]="menuOpen()">
+    <li class="sidebar__menu-item">
+      <a routerLink="/funds" routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact: true }"
+         class="sidebar__link" (click)="closeMenu()">
+        Fondos disponibles
+      </a>
+    </li>
+    <li class="sidebar__menu-item">
+      <a routerLink="/funds/my-funds" routerLinkActive="active"
+         class="sidebar__link" (click)="closeMenu()">
+        Mis fondos
+      </a>
+    </li>
+    <li class="sidebar__menu-item">
+      <a routerLink="/transactions" routerLinkActive="active"
+         class="sidebar__link" (click)="closeMenu()">
+        Historial
+      </a>
+    </li>
+  </ul>
+
+  <div class="sidebar__balance sidebar__balance--bottom">
+    <p class="sidebar__balance-label">Saldo disponible</p>
+    <h3 class="sidebar__balance-amount">{{ balanceFormatted() }}</h3>
+  </div>
+
+</nav>

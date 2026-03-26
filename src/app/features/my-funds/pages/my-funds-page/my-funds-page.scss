@@ -1,0 +1,57 @@
+.my-funds {
+  &__actions {
+    white-space: nowrap;
+  }
+
+  &__confirm {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    @media (max-width: 768px) { flex-wrap: wrap; }
+  }
+
+  &__confirm-text {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--danger);
+  }
+
+  &__btn {
+    height: 34px;
+    padding: 0 14px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: opacity 0.2s, background-color 0.2s;
+
+    &--outline {
+      background-color: transparent;
+      border: 1.5px solid var(--border);
+      color: var(--text-secondary);
+      &:hover { border-color: var(--danger); color: var(--danger); }
+    }
+
+    &--danger {
+      background-color: var(--danger);
+      border: none;
+      color: var(--text-inverse);
+      &:hover { opacity: 0.85; }
+    }
+
+    &--ghost {
+      background-color: transparent;
+      border: 1.5px solid var(--border);
+      color: var(--text-muted);
+      &:hover { background-color: var(--surface-subtle); }
+    }
+  }
+}
+
+.data-table__row--confirming {
+  background-color: var(--danger-bg);
+  &:hover { background-color: var(--danger-bg); }
+}

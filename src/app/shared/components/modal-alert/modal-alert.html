@@ -1,0 +1,21 @@
+<div class="modal-overlay">
+  <div class="modal">
+
+    <div class="modal__header">
+      <h2 class="modal__title">{{ modal()?.title }}</h2>
+      <p class="modal__description">{{ modal()?.description }}</p>
+    </div>
+
+    <div class="modal__footer" [class.modal__footer--single]="modal()?.type !== modalType.CONFIRM">
+      @if (modal()?.type === modalType.CONFIRM) {
+        <button class="modal__btn modal__btn--cancel" (click)="onClose()">
+          Cancelar
+        </button>
+      }
+      <button class="modal__btn modal__btn--action modal__btn--{{ modal()?.type }}" (click)="onAction()">
+        {{ modal()?.actionBtnText ?? 'Aceptar' }}
+      </button>
+    </div>
+
+  </div>
+</div>
