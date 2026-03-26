@@ -1,0 +1,19 @@
+.funds {
+  &__btn {
+    padding: 7px 16px;
+    border: none;
+    border-radius: var(--radius-sm);
+    background-color: var(--surface-brand);
+    color: var(--text-inverse);
+    font-size: 13px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+
+    &:hover { 
+      opacity: 0.85; 
+    }
+  }
+}

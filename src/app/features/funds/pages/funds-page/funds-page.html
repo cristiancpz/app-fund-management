@@ -1,0 +1,50 @@
+<section class="page funds">
+  <div class="page__header">
+    <p class="page__label">FONDOS DISPONIBLES</p>
+    <h1 class="page__title">Fondos disponibles</h1>
+  </div>
+
+  <div class="data-table">
+    <table class="data-table__table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Monto mínimo</th>
+          <th>Categoría</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (fund of funds(); track fund.id) {
+          <tr class="data-table__row">
+            <td><span class="row__item">{{ fund.id }}</span></td>
+            <td><span class="row__item">{{ fund.name }}</span></td>
+            <td><span class="row__item">{{ fund.mount_min }}</span></td>
+            <td><span class="row__item">{{ fund.category }}</span></td>
+            <td>
+              <button class="funds__btn" (click)="openModal(fund)">Suscribirse</button>
+            </td>
+          </tr>
+        }
+        @if (funds().length === 0) {
+          <tr>
+            <td colspan="5">
+              <div class="page__empty">
+                <p class="page__empty-title">No se encontraron fondos.</p>
+              </div>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>
+
+@if (selectedFund()) {
+  <app-subscription-modal
+    [fund]="selectedFund()!"
+    (closed)="closeModal()"
+    (confirmed)="onConfirm()"
+  />
+}

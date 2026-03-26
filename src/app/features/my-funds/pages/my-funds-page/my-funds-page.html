@@ -1,0 +1,58 @@
+<section class="page my-funds">
+  <div class="page__header">
+    <p class="page__label">MIS FONDOS</p>
+    <h1 class="page__title">Mis fondos activos</h1>
+  </div>
+
+  <div class="data-table">
+    <table class="data-table__table">
+      <thead>
+        <tr>
+          <th>Fondo</th>
+          <th>Categoría</th>
+          <th>Monto suscrito</th>
+          <th>Notificación</th>
+          <th>Fecha</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (entry of activeFunds(); track entry.id) {
+          <tr class="data-table__row" [class.data-table__row--confirming]="confirmingId() === entry.id">
+            <td><span class="row__item">{{ entry.fund.name }}</span></td>
+            <td><span class="row__item">{{ entry.fund.category }}</span></td>
+            <td><span class="row__item">${{ entry.amount.toLocaleString('es-CO') }}</span></td>
+            <td><span class="row__item">{{ entry.notification }}</span></td>
+            <td><span class="row__item">{{ entry.dateAt }}</span></td>
+            <td class="my-funds__actions">
+              @if (confirmingId() === entry.id) {
+                <div class="my-funds__confirm">
+                  <span class="my-funds__confirm-text">¿Confirmar cancelación?</span>
+                  <button class="my-funds__btn my-funds__btn--danger" (click)="confirmCancel(entry.id)">
+                    Sí, cancelar
+                  </button>
+                  <button class="my-funds__btn my-funds__btn--ghost" (click)="cancelConfirm()">
+                    No
+                  </button>
+                </div>
+              } @else {
+                <button class="my-funds__btn my-funds__btn--outline" (click)="requestCancel(entry.id)">
+                  Cancelar suscripción
+                </button>
+              }
+            </td>
+          </tr>
+        }
+        @if (activeFunds().length === 0) {
+          <tr>
+            <td colspan="6">
+              <div class="page__empty">
+                <p class="page__empty-title">No tienes fondos activos.</p>
+              </div>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>
