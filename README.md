@@ -1,4 +1,4 @@
-# Fondos FPV / FIC — BTG Pactual
+# Fondos FPV / FIC — BTG
 
 Aplicación web para la gestión de fondos de inversión (FPV y FIC). Permite al usuario consultar fondos disponibles, suscribirse a ellos, cancelar participaciones y revisar el historial de transacciones.
 
@@ -190,5 +190,3 @@ Cada operación persiste automáticamente en `localStorage`.
 |---|---|
 | `npm start` | Servidor de desarrollo en `localhost:4200` |
 | `npm run build` | Build optimizado para producción |
-| `npm run watch` | Build en modo watch (desarrollo) |
-| `npm test` | Ejecuta los tests con Vitest |
